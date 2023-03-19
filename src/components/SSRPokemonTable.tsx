@@ -1,10 +1,11 @@
 import { Pokemon } from '@/types'
 import PokemonTable from './PokemonTable'
+import { store } from '@/store'
 
-export default function SSRPokemonTable({ pokemons }: { pokemons: Pokemon[] }) {
+export default function SSRPokemonTable({}) {
   return (
     <div>
-      <PokemonTable pokemons={[]} />
+      <PokemonTable pokemons={store.getState().search.startupPokemon} />
     </div>
   )
 }

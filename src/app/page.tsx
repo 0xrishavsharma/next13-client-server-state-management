@@ -1,5 +1,7 @@
+import SSRPokemonTable from '@/components/SSRPokemonTable'
 import PokemonTable from '@/components/PokemonTable'
-import React from 'react'
+import { store } from '@/store'
+import { setStartupPokemon } from '@/store/searchSlice'
 
 export default async function Home() {
   let data
@@ -12,10 +14,11 @@ export default async function Home() {
   } catch (e) {
     console.log(e)
   }
-
+  store.dispatch(setStartupPokemon(data))
   return (
     <main>
-      <PokemonTable pokemons={data} />
+      <SSRPokemonTable />
+      {/* <PokemonTable pokemons={data} /> */}
     </main>
   )
 }
